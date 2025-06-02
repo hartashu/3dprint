@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Harta",
+    "address": "Jl. Gading Serpong",
+    "UserId": 1
+  },
+  {
+    "name": "Bambang",
+    "address": "Jl. BSD",
+    "UserId": 2
+  }
+]

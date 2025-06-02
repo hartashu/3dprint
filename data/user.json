@@ -1,0 +1,12 @@
+[
+  {
+    "email": "harta@gmail.com",
+    "password": "harta#123",
+    "role": "seller"
+  },
+  {
+    "email": "bambang@gmail.com",
+    "password": "bambang#123",
+    "role": "buyer"
+  }
+]
