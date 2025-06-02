@@ -1,0 +1,39 @@
+Table Users {
+  id SERIAL [PRIMARY KEY]
+  email VARCHAR
+  password VARCHAR
+  role VARCHAR
+}
+
+Table Profiles {
+  id SERIAL [PRIMARY KEY]
+  name VARCHAR
+  address VARCHAR
+  "UserId" INTEGER
+}
+
+Table Transactions {
+  id SERIAL [PRIMARY KEY]
+  "createdAt" DATE
+  status VARCHAR
+  "UserId" INTEGER
+}
+
+Table Orders {
+  id SERIAL [PRIMARY KEY]
+  "TransactionId" INTEGER
+  "MaterialId" INTEGER
+  quantity INTEGER
+  "filePath" VARCHAR
+}
+
+Table Materials {
+  id SERIAL [PRIMARY KEY]
+  name VARCHAR
+  price INTEGER
+}
+
+Ref: Users.id - Profiles.UserId
+Ref: Users.id < Transactions.UserId
+Ref: Transactions.id < Orders.TransactionId
+Ref: Materials.id < Orders.MaterialId
