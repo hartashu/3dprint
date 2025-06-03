@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+</head>
+<body>
+  
+  <h2>Registration</h2>
+
+  <% if (errors) { %>
+    <div>
+      <% errors.forEach(el => { %>
+        <span style="color: red;"><%= el %></span>
+      <% }) %>
+    </div>
+    <br>
+  <% } %>
+
+
+  <form action="/register" method="post">
+
+    <label for="username">Username:</label> <br>
+    <input type="text" name="username" id="username">
+
+    <br><br>
+
+    <label for="email">Email address:</label> <br>
+    <input type="text" name="email" id="email">
+
+    <br><br>
+
+    <label for="password">Password:</label> <br>
+    <input type="password" name="password" id="password">
+
+    <br><br>
+
+    <label for="role">Who do you want to be?</label> <br>
+    <select name="role" id="role">
+      <option value="buyer">Buyer</option>
+      <option value="seller">Seller</option>
+    </select>
+
+    <br><br><br>
+
+    <button type="submit">Register</button>
+
+  </form>
+
+  <p>Already has an account? <a href="/login">login here</a></p>
+
+</body>
+</html>
