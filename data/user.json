@@ -1,12 +1,26 @@
 [
   {
+    "username": "hartashu",
     "email": "harta@gmail.com",
-    "password": "harta#123",
+    "password": "111",
     "role": "seller"
   },
   {
+    "username": "bambang",
     "email": "bambang@gmail.com",
-    "password": "bambang#123",
+    "password": "222",
+    "role": "buyer"
+  },
+  {
+    "username": "1",
+    "email": "1",
+    "password": "1",
+    "role": "seller"
+  },
+  {
+    "username": "2",
+    "email": "2",
+    "password": "2",
     "role": "buyer"
   }
 ]
