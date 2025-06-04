@@ -4,17 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload Files</title>
+
+  <link rel="stylesheet" href="http://localhost:3000/css/reset.css">
+  <link rel="stylesheet" href="http://localhost:3000/css/upload.css">
 </head>
 <body>
+
+  <header class="header">
+    <button>
+      <a href="/buyer/<%= userId %>/order">Order History</a>
+    </button>
+
+    <button>
+      <a href="/logout">Logout</a>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="greet">
+      <h2>Hi, <span class="username"><%= username %> (<%= email %>)</span></h2>
+      <p>Prepare your STL files to be printed!</p>
+    </div>
+
+    <form action="/buyer/<%= userId %>/upload" method="post" enctype="multipart/form-data" class="form">
+
+      <div>
+        <label for="file">Upload your files:</label> <br>
+        <input type="file" name="file" id="file">
+      </div>
   
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <label for="photo">Upload your files:</label> <br>
-    <input type="file" name="photo" id="photo">
+      <button type="submit">Submit</button>
 
-    <br><br>
-
-    <button type="submit">Submit</button>
-  </form>
+    </form>
+  </main>
+  
 
 </body>
 </html>

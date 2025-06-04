@@ -5,7 +5,7 @@ session = require('express-session');
 const port = 3000;
 
 app.use(session({
-  secret: 'bambang',
+  secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
   cookie: {

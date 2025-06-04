@@ -17,7 +17,7 @@ module.exports = {
 
     profiles.forEach(el => el.createdAt = el.updatedAt = new Date());
 
-    await queryInterface.bulkInsert('Profiles', profiles, {});
+    await queryInterface.bulkInsert('Profiles', profiles);
   },
 
   async down (queryInterface, Sequelize) {

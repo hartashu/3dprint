@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PLA",
+    "price": 1000
+  },
+  {
+    "name": "PETG",
+    "price": 1600
+  },
+  {
+    "name": "TPU",
+    "price": 2400
+  }
+]

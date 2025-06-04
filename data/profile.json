@@ -1,22 +1,22 @@
 [
   {
     "name": "Harta",
-    "address": "Jl. Gading Serpong",
+    "address": "Jl. Berbahagia Selalu",
     "UserId": 1
   },
   {
     "name": "Bambang",
-    "address": "Jl. BSD",
+    "address": "Jl. Senang Senantiasa",
     "UserId": 2
   },
   {
-    "name": "Bambang",
-    "address": "Jl. BSD",
+    "name": "Budi",
+    "address": "Jl. Suka Damai",
     "UserId": 3
   },
   {
-    "name": "Bambang",
-    "address": "Jl. BSD",
+    "name": "Tono",
+    "address": "Jl. Suka Cita",
     "UserId": 4
   }
 ]
