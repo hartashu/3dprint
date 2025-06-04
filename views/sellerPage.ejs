@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Page</title>
+
+  <link rel="stylesheet" href="http://localhost:3000/css/reset.css">
+  <link rel="stylesheet" href="http://localhost:3000/css/sellerPage.css">
+</head>
+<body>
+
+  <header class="header">
+    <button>
+      <a href="/logout">Logout</a>
+    </button>
+  </header>
+
+  <div class="sorter">
+    <button>
+      <a href="/seller/<%= userId %>?sort=uploadedDate">Sort by latest upload</a>
+    </button>
+    <button>
+      <a href="/seller/<%= userId %>?sort=notPaid">Filter by not paid</a>
+    </button>
+  </div>
+  
+  <main class="main">
+
+    <% if (orders.length === 0) { %>
+      <h2>You have no list yet!</h2>
+    <% } else { %>
+      <div class="greet">
+        <h2>Hi Seller <span class="username"><%= username %> (<%= email %>)</span></h2>
+        <p>This is your beloved customer!</p>
+      </div>
+  
+      <table class="order-table">
+
+        <tr>
+          <th>No.</th>
+          <th>Customer</th>
+          <th>File Name</th>
+          <th>Uploaded Date</th>
+          <th>Payment Status</th>
+          <th>Payment Date</th>
+          <th>Materials</th>
+          <th>Total Price</th>
+          <th>Action</th>
+        </tr>
+    
+        <% orders.forEach((order, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+
+            <td>
+              <p><%= order.User.Profile.name %></p>
+              <p>(<%= order.User.email %>)</p>
+            </td>
+
+            <td><%= order.fileName %></td>
+            <td><%= order.uploadedDate %></td>
+
+            <td>
+              <% if (order.paidStatus) { %>
+                <span class="paid">Paid</span>
+              <% } else { %>
+                <span class="not-paid">Not Paid</span>
+              <% } %>
+            </td>
+
+            <td><%= order.paymentAt ? order.paymentDate : '' %></td>
+
+            <td class="material">
+              <% order.Materials.forEach(material => { %>
+                <p><%= material.name %> - <%= material.OrderDetail.quantity %> gr</p>
+              <% }) %>
+            </td>
+
+            <td>
+              <% if (order.totalPrice === 0) { %>
+                <span class="checking">On Checking</span>
+              <% } else { %>
+                <%= order.rupiahCurrency %> 
+              <% } %>
+            </td>
+            
+            <td>
+              <div>
+                <% if (order.paidStatus) { %>
+                  <span class="warning">Finished</span>
+                <% } else if (!order.totalPrice && !order.paidStatus) { %>
+                  <div>
+                    <button class="action-button">
+                      <a href="/seller/<%= userId %>/price/<%= order.id %>">Calculate</a>
+                    </button>
+                  </div>
+
+                  <br>
+
+                  <div>
+                    <button class="action-button">
+                      <a href="/cancel/<%= userId %>/order/<%= order.id %>">Cancel</a>
+                    </button>
+                  </div>
+                <% } else if (order.totalPrice && !order.paidStatus) { %>
+                  <button class="action-button">
+                    <a href="/seller/<%= userId %>/paid/<%= order.id %>">Is Paid</a>
+                  </button>
+                <% } %>
+              </div>
+
+              
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+      
+    <% } %>
+
+
+  </main>
+
+</body>
+</html>

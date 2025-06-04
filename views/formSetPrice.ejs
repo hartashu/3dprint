@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Calculate Price</title>
+
+  <link rel="stylesheet" href="http://localhost:3000/css/reset.css">
+  <link rel="stylesheet" href="http://localhost:3000/css/formSetPrice.css">
+</head>
+<body>
+
+  <header class="header">
+    <button>
+      <a href="/seller/<%= userId %>">Back</a>
+    </button>
+
+    <button>
+      <a href="/logout">Logout</a>
+    </button>
+  </header>
+  
+  <main class="main">
+    <h2>Input weight of the printed STL</h2>
+    <form action="/seller/<%= userId %>/price/<%= orderId %>" method="post" class="form">
+
+      <div>
+        <label for="pla">PLA:</label> <br>
+        <input type="number" name="pla" id="pla">
+      </div>
+  
+      <div>
+        <label for="petg">PETG:</label> <br>
+        <input type="number" name="petg" id="petgs">
+      </div>
+
+      <div>
+        <label for="tpu">TPU:</label> <br>
+        <input type="number" name="tpu" id="tpu">
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+
+</body>
+</html>

@@ -2,25 +2,25 @@
   {
     "username": "hartashu",
     "email": "harta@gmail.com",
-    "password": "111",
+    "password": "123456",
     "role": "seller"
   },
   {
     "username": "bambang",
     "email": "bambang@gmail.com",
-    "password": "222",
+    "password": "123456",
     "role": "buyer"
   },
   {
-    "username": "1",
-    "email": "1",
-    "password": "1",
-    "role": "seller"
+    "username": "budi",
+    "email": "budi@gmail.com",
+    "password": "123456",
+    "role": "buyer"
   },
   {
-    "username": "2",
-    "email": "2",
-    "password": "2",
+    "username": "tono",
+    "email": "tono@gmail.com",
+    "password": "123456",
     "role": "buyer"
   }
 ]

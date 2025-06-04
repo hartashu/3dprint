@@ -1,7 +1,5 @@
 'use strict';
 
-const bcrypt = require('bcryptjs');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -15,17 +13,11 @@ module.exports = {
      * }], {});
     */
 
-    const users = require('../data/user.json');
+    const orders = require('../data/order.json');
 
-    users.forEach(el => {
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(el.password, salt);
+    orders.forEach(el => el.createdAt = el.updatedAt = el.paymentAt = new Date());
 
-      el.password = hash;
-      el.createdAt = el.updatedAt = new Date();
-    });
-
-    await queryInterface.bulkInsert('Users', users);
+    await queryInterface.bulkInsert('Orders', orders);
   },
 
   async down (queryInterface, Sequelize) {
@@ -36,7 +28,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    await queryInterface.bulkDelete('Users', null, {
+    await queryInterface.bulkDelete('Orders', null, {
       restartIdentity: true,
       truncate: true,
       cascade: true

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyer Order History</title>
+
+  <link rel="stylesheet" href="http://localhost:3000/css/reset.css">
+  <link rel="stylesheet" href="http://localhost:3000/css/orderHistory.css">
+</head>
+<body>
+
+  <header class="header">
+    <button>
+      <a href="/buyer/<%= userId %>/upload">Upload Page</a>
+    </button>
+
+    <button>
+      <a href="/logout">Logout</a>
+    </button>
+  </header>
+
+  <form action="/buyer/<%= userId %>/order" method="get" class="search-form">
+    <input type="text" name="search" id="search" placeholder="Search by Title">
+    <button type="submit">Search</button>
+  </form>
+
+  <main class="main">
+
+    <% if (errors) { %>
+      <p class="error"><%= errors %></p>
+    <% } %>
+
+    <% if (orders.length === 0) { %>
+      <h2>You have never ordered yet! Or search not found!</h2>
+    <% } else { %>
+      <div class="greet">
+        <h2>Hi, <span class="username"><%= username %> (<%= email %>)</span></h2>
+        <p>This is your Order History!</p>
+      </div>
+
+      <table class="order-table">
+        <tr>
+          <th>No.</th>
+          <th>File Name</th>
+          <th>Uploaded Date</th>
+          <th>Payment Status</th>
+          <th>Payment Date</th>
+          <th>Materials</th>
+          <th>Total Price</th>
+          <th>Action</th>
+        </tr>
+    
+        <% orders.forEach((order, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= order.fileName %></td>
+            <td><%= order.uploadedDate %></td>
+            <td><%= order.paidStatus ? 'Paid' : 'Not Paid' %></td>
+            <td><%= order.paymentAt ? order.paymentDate : '' %></td>
+
+            <td class="material">
+              <% order.Materials.forEach(material => { %>
+                <p><%= material.name %> - <%= material.OrderDetail.quantity %> gr</p>
+              <% }) %>
+            </td>
+
+            <td>
+              <% if (order.totalPrice === 0) { %>
+                <span class="checking">On Checking</span>
+              <% } else { %>
+                <%= order.rupiahCurrency %> 
+              <% } %>
+            </td>
+            
+            <% if (!order.paidStatus) { %>
+              <td>
+                <button class="cancel-button">
+                  <a href="/cancel/<%= userId %>/order/<%= order.id %>">Cancel</a>
+                </button>
+              </td>
+            <% } else { %>
+              <td class="warning">
+                Finished
+              </td>   
+            <% } %>
+          </tr>
+        <% }) %>
+      </table>
+    <% } %>
+
+  </main>
+  
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+  {
+    "paidStatus": true,
+    "fileName": "Casing.stl",
+    "filePath": "uploads/",
+    "totalPrice": 98000,
+    "UserId": 2
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Action-Figure.stl",
+    "filePath": "uploads/",
+    "totalPrice": 100000,
+    "UserId": 2
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Prototype.stl",
+    "filePath": "uploads/",
+    "totalPrice": 188000,
+    "UserId": 2
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Box.stl",
+    "filePath": "uploads/",
+    "totalPrice": 112000,
+    "UserId": 4
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Tamiya.stl",
+    "filePath": "uploads/",
+    "totalPrice": 260000,
+    "UserId": 4
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Pohon.stl",
+    "filePath": "uploads/",
+    "totalPrice": 50000,
+    "UserId": 3
+  },
+  {
+    "paidStatus": true,
+    "fileName": "Mainan.stl",
+    "filePath": "uploads/",
+    "totalPrice": 103200,
+    "UserId": 2
+  }
+]

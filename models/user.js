@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasOne(models.Profile);
+      User.hasMany(models.Order);
     }
   }
   User.init({
@@ -25,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: 'Username is empty!'
+          msg: 'Username is required.'
         },
         notEmpty: {
           args: true,
-          msg: 'Username is empty!'
+          msg: 'Username is required.'
         }
       }
     },
@@ -40,11 +41,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: 'Email is empty!'
+          msg: 'Email is required.'
         },
         notEmpty: {
           args: true,
-          msg: 'Email is empty!'
+          msg: 'Email is required.'
         },
         isEmail: {
           args: true,
@@ -58,11 +59,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: 'Password is empty!'
+          msg: 'Password is required.'
         },
         notEmpty: {
           args: true,
-          msg: 'Password is empty!'
+          msg: 'Password is required.'
         }
       }
     },
@@ -82,11 +83,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     hooks: {
-      beforeCreate: async (user, options) => {
+      beforeCreate: async (user) => {
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(user.password, salt);
         
         user.password = hash;
+      },
+      afterCreate: (user) => {
+        sequelize.models.Profile.create({name: `no-name-${Date.now()}`, address: 'No Address', UserId: user.id, createdAt: new Date(), updatedAt: new Date()});
       }
     },
     sequelize,

@@ -1,39 +1,43 @@
-Table Users {
+Table "Users" {
   id SERIAL [PRIMARY KEY]
+  username VARCHAR
   email VARCHAR
   password VARCHAR
   role VARCHAR
 }
 
-Table Profiles {
+Table "Profiles" {
   id SERIAL [PRIMARY KEY]
   name VARCHAR
   address VARCHAR
   "UserId" INTEGER
 }
 
-Table Transactions {
+Table "Orders" {
   id SERIAL [PRIMARY KEY]
   "createdAt" DATE
-  status VARCHAR
+  "paidStatus" BOOLEAN
+  "fileName" VARCHAR
+  "filePath" VARCHAR
+  "paymentAt" DATE
+  "totalPrice" INTEGER
   "UserId" INTEGER
 }
 
-Table Orders {
+Table "OrderDetails" {
   id SERIAL [PRIMARY KEY]
-  "TransactionId" INTEGER
+  "OrderId" INTEGER
   "MaterialId" INTEGER
   quantity INTEGER
-  "filePath" VARCHAR
 }
 
-Table Materials {
+Table "Materials" {
   id SERIAL [PRIMARY KEY]
   name VARCHAR
   price INTEGER
 }
 
 Ref: Users.id - Profiles.UserId
-Ref: Users.id < Transactions.UserId
-Ref: Transactions.id < Orders.TransactionId
-Ref: Materials.id < Orders.MaterialId
+Ref: Users.id < Orders.UserId
+Ref: Orders.id < OrderDetails.OrderId
+Ref: Materials.id < OrderDetails.MaterialId
